@@ -93,4 +93,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 -> Update store with movies data
 -> Planning for Maincontainer and secondary container
 -> Fetch data for trailer video
--> Update data for trailer video
+-> Update store with trailer video data
+-> Embedded the youtube video and made it autoplay and mute
+-> Tailwind classes to make it look awesome 
