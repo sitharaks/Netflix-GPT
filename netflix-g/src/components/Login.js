@@ -1,10 +1,11 @@
 import React, { useState, useRef } from 'react'
 import Header from './Header'
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { checkValidation } from '../utils/validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
+import { addUser } from '../utils/userSlice';
+import { PHOTO_URL } from '../utils/constant';
 
 const Login = () => {
   const [isSignInForm, setIsSigninForm] = useState(true);
@@ -15,13 +16,10 @@ const Login = () => {
   const nameRef = useRef(null);
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleButtonClick = (e) => {
-      console.log('sign in button clicked');
       const message =  checkValidation(emailRef.current.value, passwordRef.current.value);
       setErrorMessage(message);
-      console.log('error message', message);
       if(message) return;
       if(!isSignInForm){
           createUserWithEmailAndPassword(auth,emailRef.current.value, passwordRef.current.value)
@@ -29,40 +27,29 @@ const Login = () => {
           // Signed up 
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: nameRef.current.value, photoURL: "https://media.licdn.com/dms/image/v2/C5603AQHlr5PSrMz5Yg/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1633375135780?e=1756339200&v=beta&t=oYboG5tgYK3FsgJSgsFNObzf5oMbHvVR6NOnJFHqlUs"
+            displayName: nameRef.current.value, photoURL: PHOTO_URL
           }).then(() => {
             const {uid, email, displayName, photoURL} = auth.currentUser;
-            dispatch({
-              type: 'addUser',
-              payload: {
-                uid,
-                email,
-                displayName,
-                photoURL
-              }
-            });
-            navigate('/browse');
+            dispatch(addUser({
+                     uid: uid,
+                    email: email,
+                    displayName: displayName,
+                    photoURL: photoURL
+                  }));
           }).catch((error) => {
             setErrorMessage(error.message);
           });
-          console.log('User signed up successfully:', user);
-          navigate('/');
-          // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrorMessage(errorCode + ' ' + errorMessage);
-          // ..
         });
       }else{
         signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
         .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                console.log('User signed in successfully:', user);
-                navigate('/browse');
-                // ...
               })
               .catch((error) => {
                 const errorCode = error.code;
