@@ -5,7 +5,7 @@ import { checkValidation } from '../utils/validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase';
 import { addUser } from '../utils/userSlice';
-import { PHOTO_URL } from '../utils/constant';
+import { BACKGROUND_IMAGE, PHOTO_URL } from '../utils/constant';
 
 const Login = () => {
   const [isSignInForm, setIsSigninForm] = useState(true);
@@ -60,9 +60,10 @@ const Login = () => {
     }
   return (
     <div>
+      <Header />
       <div className='absolute' >
-          <Header />
-          <img src="https://assets.nflxext.com/ffe/siteui/vlv3/af2fac72-d956-4952-8686-4d45d359d78c/web/IN-en-20250526-TRIFECTA-perspective_5db3e163-56f7-47c7-9a65-b79b9d76bf24_large.jpg" alt="Netflix Logo"  />
+          
+          <img src={BACKGROUND_IMAGE} alt="Netflix Logo"  />
       </div>
       <form onSubmit={(e)=>e.preventDefault()} className="w-3/12 absolute p-12 bg-black mx-auto my-200 right-0 left-0 text-white rounded-lg bg-opacity-80">
           <h1 className='font-bold text-3xl py-4  my-4'>{isSignInForm ? 'Sign In': 'Sign Up'}</h1>

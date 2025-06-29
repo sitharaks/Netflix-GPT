@@ -97,3 +97,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 -> Embedded the youtube video and made it autoplay and mute
 -> Tailwind classes to make it look awesome 
 -> Build secondary component
+-> Build movie List
+-> Build movie card
+-> Found TMDB image CDN
+-> Made browse page amazing with TailwindCSS
+-> usePopular custom hook
+-> GPT Search feature
