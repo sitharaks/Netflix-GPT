@@ -4,10 +4,11 @@ export const API_OPTIONS = {
   method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkMjQzMGFhNmJlYmU5MzFmMDliNmY5NGFmMTdmYzQ3NCIsIm5iZiI6MTc1MTAyNDY0NS43NTMsInN1YiI6IjY4NWU4NDA1MTBmZWEzOWI4NjdiNDMwMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.r-6v_OrX3j6tufvxDVFtr6zYOF3RJrZRXPQvLtSNTOY'
+    Authorization: 'Bearer '+ process.env.REACT_APP_TMDB_KEY, 
   }
 };
 export const NOW_PLAYING_MOVIES_API = "https://api.themoviedb.org/3/movie/now_playing?page=1";
 export const POPULAR_MOVIES_API = "https://api.themoviedb.org/3/movie/popular?page=1";
 export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/"
 export const BACKGROUND_IMAGE ="https://assets.nflxext.com/ffe/siteui/vlv3/af2fac72-d956-4952-8686-4d45d359d78c/web/IN-en-20250526-TRIFECTA-perspective_5db3e163-56f7-47c7-9a65-b79b9d76bf24_large.jpg"
+export const OPEN_AI_API_KEY = process.env.REACT_APP_OPEN_AI_API_KEY;

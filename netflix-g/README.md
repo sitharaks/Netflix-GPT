@@ -103,3 +103,16 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 -> Made browse page amazing with TailwindCSS
 -> usePopular custom hook
 -> GPT Search feature
+-> GPT Search Bar
+-> Multi language feature support in search page
+-> Integrate GPT APIs
+->memoization
+->GET  Open AI API Key
+-> GPT Search API call
+-> fetched getMovieSuggestions from TMDB
+-> created gptSlice addded data
+-> Reused movie list component to make movie suggestion container
+-> Added .env file
+-> Added .env file to  gitignore
+-> Made our site responsive
+
