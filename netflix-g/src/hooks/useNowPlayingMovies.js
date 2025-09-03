@@ -13,7 +13,7 @@ const useNowPlayingMovies = () => {
       dispatch(addNowPlayingMovies(json.results));
   };
   useEffect(() => {
-    getNowPlayingMovies();
+   !nowPlayingMovies && getNowPlayingMovies();
   }, []);
 };
 
